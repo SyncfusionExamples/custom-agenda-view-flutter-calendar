@@ -119,6 +119,6 @@ body: Column(
 ```
 **[View document in Syncfusion Flutter Knowledge base](https://www.syncfusion.com/kb/11016/how-to-show-a-custom-agenda-view-in-the-flutter-event-calendar-sfcalendar-widget)**
 
-**Screenshots**
+**Screenshot**
 
 ![custom agenda view](http://www.syncfusion.com/uploads/user/kb/flut/flut-668/flut-668_img2.png)
