@@ -2,7 +2,7 @@
 
 In the flutter event calendar, you can integrate custom agenda view using the appointment details from the `OnTap` callback of the calendar. 
 
-<img alt="Custom agenda"  src="http://www.syncfusion.com/uploads/user/kb/flut/flut-668/flut-668_img1.gif" width="250" height="400" />|
+<img alt="Custom agenda"  src="http://www.syncfusion.com/uploads/user/kb/flut/flut-668/flut-668_img1.gif" width="400" height="400" />|
 
 ## Step 1:
 In initState(), set the default value for the calendar view.
@@ -121,4 +121,4 @@ body: Column(
 
 **Screenshot**
 
-<img alt="custom agenda view" src="http://www.syncfusion.com/uploads/user/kb/flut/flut-668/flut-668_img2.png" width="250" height="400" />|
+<img alt="custom agenda view" src="http://www.syncfusion.com/uploads/user/kb/flut/flut-668/flut-668_img2.png" width="250" height="500" />|
