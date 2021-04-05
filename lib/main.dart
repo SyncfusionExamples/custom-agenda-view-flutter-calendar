@@ -22,91 +22,89 @@ class CustomAgenda extends StatefulWidget {
 }
 
 class ScheduleExample extends State<CustomAgenda> {
-  CalendarView _calendarView;
-  List<Appointment> appointmentDetails;
-
-  @override
-  void initState() {
-    appointmentDetails = <Appointment>[];
-    _calendarView = CalendarView.month;
+  List<Appointment> appointmentDetails=<Appointment>[];
+  @override void initState() {
+    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: SfCalendar(
-              view: _calendarView,
-              dataSource: getCalendarDataSource(),
-              onTap: calendarTapped,
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: SfCalendar(
+                view: CalendarView.month,
+                dataSource: getCalendarDataSource(),
+                onTap: calendarTapped,
+              ),
             ),
-          ),
-          Expanded(
-              child: Container(
-                  color: Colors.black12,
-                  child: ListView.separated(
-                    padding: const EdgeInsets.all(2),
-                    itemCount: appointmentDetails.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                          padding: EdgeInsets.all(2),
-                          height: 60,
-                          color: appointmentDetails[index].color,
-                          child: ListTile(
-                            leading: Column(
-                              children: <Widget>[
-                                Text(
-                                  appointmentDetails[index].isAllDay
-                                      ? ''
-                                      : '${DateFormat('hh:mm a').format(appointmentDetails[index].startTime)}',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                      height: 1.7),
-                                ),
-                                Text(
-                                  appointmentDetails[index].isAllDay
-                                      ? 'All day'
-                                      : '',
-                                  style: TextStyle(
-                                      height: 0.5, color: Colors.white),
-                                ),
-                                Text(
-                                  appointmentDetails[index].isAllDay
-                                      ? ''
-                                      : '${DateFormat('hh:mm a').format(appointmentDetails[index].endTime)}',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white),
-                                ),
-                              ],
-                            ),
-                            trailing: Container(
-                                child: Icon(
-                              getIcon(appointmentDetails[index].subject),
-                              size: 30,
-                              color: Colors.white,
-                            )),
-                            title: Container(
-                                child: Text(
-                                    '${appointmentDetails[index].subject}',
+            Expanded(
+                child: Container(
+                    color: Colors.black12,
+                    child: ListView.separated(
+                      padding: const EdgeInsets.all(2),
+                      itemCount: appointmentDetails.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                            padding: EdgeInsets.all(2),
+                            height: 60,
+                            color: appointmentDetails[index].color,
+                            child: ListTile(
+                              leading: Column(
+                                children: <Widget>[
+                                  Text(
+                                    appointmentDetails[index].isAllDay
+                                        ? ''
+                                        : '${DateFormat('hh:mm a').format(appointmentDetails[index].startTime)}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.white))),
-                          ));
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(
-                      height: 5,
-                    ),
-                  )))
-        ],
+                                        color: Colors.white,
+                                        height: 1.7),
+                                  ),
+                                  Text(
+                                    appointmentDetails[index].isAllDay
+                                        ? 'All day'
+                                        : '',
+                                    style: TextStyle(
+                                        height: 0.5, color: Colors.white),
+                                  ),
+                                  Text(
+                                    appointmentDetails[index].isAllDay
+                                        ? ''
+                                        : '${DateFormat('hh:mm a').format(appointmentDetails[index].endTime)}',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              trailing: Container(
+                                  child: Icon(
+                                getIcon(appointmentDetails[index].subject),
+                                size: 30,
+                                color: Colors.white,
+                              )),
+                              title: Container(
+                                  child: Text(
+                                      '${appointmentDetails[index].subject}',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white))),
+                            ));
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(
+                        height: 5,
+                      ),
+                    )))
+          ],
+        ),
       ),
     ));
   }
@@ -114,7 +112,7 @@ class ScheduleExample extends State<CustomAgenda> {
   void calendarTapped(CalendarTapDetails calendarTapDetails) {
     if (calendarTapDetails.targetElement == CalendarElement.calendarCell) {
       setState(() {
-        appointmentDetails = calendarTapDetails.appointments;
+        appointmentDetails = calendarTapDetails.appointments!.cast<Appointment>();
       });
     }
   }
